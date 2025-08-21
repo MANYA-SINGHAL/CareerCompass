@@ -15,7 +15,7 @@ export default function LearningRoadmap({ analysisText, jobDescription, onClose 
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5050/roadmap", {
+      const response = await fetch("/roadmap", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

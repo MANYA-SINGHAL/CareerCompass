@@ -139,7 +139,7 @@ export default function ResumeUpload() {
       formData.append("jobDescription", jobDescription);
 
       setLoading(true);
-      const response = await fetch("http://localhost:5050/analyze", {
+      const response = await fetch("/analyze", {
         method: "POST",
         body: formData,
       });

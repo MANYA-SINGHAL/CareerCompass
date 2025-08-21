@@ -14,7 +14,11 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ 
+  origin: process.env.NODE_ENV === 'production' 
+    ? "https://careercompass-7jg1.onrender.com"  // Your deployed frontend URL
+    : "http://localhost:3000"  // Local development
+}));
 app.use(express.json());
 const quizRoutes = require("./api/quizRoutes");
 app.use("/api/quiz", quizRoutes);
