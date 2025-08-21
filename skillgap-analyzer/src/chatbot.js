@@ -10,8 +10,8 @@ export default function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const USER_ID = "demo-user"; // replace with actual logged-in user id
-  const API_BASE = "http://localhost:5050/api"; // backend URL
+  const USER_ID = "demo-user";
+  const API_BASE = "/api"; // backend URL
 
   // Auto scroll to latest message
   useEffect(() => {

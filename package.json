@@ -1,0 +1,19 @@
+{
+    "name": "careercompass-fullstack",
+    "version": "1.0.0",
+    "description": "AI-powered skill gap analyzer with personalized learning roadmaps",
+    "scripts": {
+      "build": "npm run install-deps && npm run build-client",
+      "start": "node backend/server.js",
+      "install-deps": "npm install --prefix client && npm install --prefix backend",
+      "build-client": "npm run build --prefix client",
+      "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix client\"",
+      "postinstall": "npm run install-deps"
+    },
+    "engines": {
+      "node": ">=16.0.0"
+    },
+    "devDependencies": {
+      "concurrently": "^8.2.0"
+    }
+  }

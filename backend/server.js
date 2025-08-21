@@ -5,6 +5,8 @@ const multer = require("multer");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
 const mammoth = require("mammoth");
+const path = require("path");
+
 
 // Import the Google Generative AI SDK
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -14,7 +16,7 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
-const quizRoutes = require("./quizRoutes");
+const quizRoutes = require("./api/quizRoutes");
 app.use("/api/quiz", quizRoutes);
 
 const PORT = process.env.PORT || 5050;
@@ -1457,8 +1459,24 @@ function parseImprovedRoadmap(text) {
 }
 
 // Import chatbot routes
-const studybotRoutes = require("./studybotRoutes");
+const studybotRoutes = require("./api/studybotRoutes");
 app.use("/api", studybotRoutes); // All chatbot routes start with /api
+
+// Serve React build files in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder to client build
+  app.use(express.static(path.join(__dirname, "../skillgap-analyzer/build")));
+  
+  // Catch all handler: send back React's index.html file for any non-API routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../skillgap-analyzer/build", "index.html"));
+  });
+}
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.json({ status: "Server is running!" });
+});
 
 // Start the server
 app.listen(PORT, () => {
