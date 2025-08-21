@@ -3,17 +3,20 @@
     "version": "1.0.0",
     "description": "AI-powered skill gap analyzer with personalized learning roadmaps",
     "scripts": {
-      "build": "npm run install-deps && npm run build-client",
-      "start": "node backend/server.js",
-      "install-deps": "npm install --prefix skillgap-analyzer && npm install --prefix backend",
-      "build-client": "npm run build --prefix skillgap-analyzer",
-      "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix skillgap-analyzer\"",
-      "postinstall": "npm run install-deps"
+        "build": "npm run install-deps && npm run build-client",
+        "start": "node backend/server.js",
+        "install-deps": "npm install --prefix skillgap-analyzer && npm install --prefix backend",
+        "build-client": "npm run build --prefix skillgap-analyzer",
+        "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix skillgap-analyzer\"",
+        "postinstall": "npm run install-deps"
     },
     "engines": {
-      "node": ">=16.0.0"
+        "node": ">=16.0.0"
     },
     "devDependencies": {
-      "concurrently": "^8.2.0"
+        "concurrently": "^8.2.0"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
     }
-  }
+}
