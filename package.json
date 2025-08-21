@@ -5,9 +5,9 @@
     "scripts": {
       "build": "npm run install-deps && npm run build-client",
       "start": "node backend/server.js",
-      "install-deps": "npm install --prefix client && npm install --prefix backend",
-      "build-client": "npm run build --prefix client",
-      "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix client\"",
+      "install-deps": "npm install --prefix skillgap-analyzer && npm install --prefix backend",
+      "build-client": "npm run build --prefix skillgap-analyzer",
+      "dev": "concurrently \"npm run dev --prefix backend\" \"npm run start --prefix skillgap-analyzer\"",
       "postinstall": "npm run install-deps"
     },
     "engines": {
